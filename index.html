@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zapplet - 做个小应用 | 无代码微信小程序开发平台</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏样式 */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #07C160;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: #333;
+        }
+
+        /* 主要内容样式 */
+        .hero {
+            background: linear-gradient(135deg, #07C160 0%, #1aad19 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: #07C160;
+            margin-bottom: 1rem;
+        }
+
+        .advantages {
+            background-color: #f8f9fa;
+        }
+
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .advantage-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem;
+        }
+
+        .advantage-item i {
+            font-size: 1.5rem;
+            color: #07C160;
+            margin-right: 1rem;
+            margin-top: 0.2rem;
+        }
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact a {
+            color: #07C160;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 4rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 6rem 0 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .feature {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo">Zapplet</div>
+            <div class="nav-links">
+                <a href="#features">产品特点</a>
+                <a href="#advantages">产品优势</a>
+                <a href="#contact">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Zapplet - 做个小应用</h1>
+            <p>零代码，拖拽式微信小程序开发平台</p>
+            <p>让每个人都能轻松创建专业的微信小程序</p>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <div class="container">
+            <h2 class="section-title">产品特点</h2>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-magic"></i>
+                    <h3>可视化拖拽</h3>
+                    <p>所见即所得的界面设计<br>轻松实现专业效果</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-bolt"></i>
+                    <h3>快速开发</h3>
+                    <p>无需编写代码<br>大幅缩短开发周期</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>多端适配</h3>
+                    <p>自动适配各种屏幕<br>完美呈现内容</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="advantages" class="section advantages">
+        <div class="container">
+            <h2 class="section-title">产品优势</h2>
+            <div class="advantage-grid">
+                <div class="advantage-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <h3>零门槛开发</h3>
+                        <p>无需编程基础，人人都能快速上手，轻松创建专业小程序</p>
+                    </div>
+                </div>
+                <div class="advantage-item">
+                    <i class="fas fa-rocket"></i>
+                    <div>
+                        <h3>快速迭代</h3>
+                        <p>所见即所得的开发方式，随时预览，快速调整，即时发布</p>
+                    </div>
+                </div>
+                <div class="advantage-item">
+                    <i class="fas fa-palette"></i>
+                    <div>
+                        <h3>丰富组件</h3>
+                        <p>内置大量精美组件和模板，轻松实现各类功能需求</p>
+                    </div>
+                </div>
+                <div class="advantage-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <div>
+                        <h3>安全可靠</h3>
+                        <p>符合微信小程序规范，确保应用安全稳定运行</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <p>如果您有任何问题或建议，欢迎随时联系我们</p>
+            <p>邮箱：<a href="mailto:zapplet@hotmail.com">zapplet@hotmail.com</a></p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Zapplet - 做个小应用. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
