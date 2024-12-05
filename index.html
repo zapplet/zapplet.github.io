@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zapplet - 做个小应用 | 无代码微信小程序开发平台</title>
+    <title>ZAPPLET - 做个小应用 | 无代码微信小程序开发平台</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
@@ -170,28 +170,63 @@
             .features {
                 grid-template-columns: 1fr;
             }
+
+            .contact-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 24px;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item i {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+        }
+
+        .contact-item h4 {
+            margin-bottom: 8px;
+        }
+
+        .contact-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="container nav-content">
-            <a href="https://zapplet.github.io" class="logo-container">
-                <img src="logo.svg" alt="Zapplet" class="logo-img">
-                <span class="logo-text">Zapplet</span>
+            <a href="/" class="logo-container">
+                <!-- 如果暂时没有logo，可以用文字代替 -->
+                <!-- <img src="logo.svg" alt="ZAPPLET" class="logo-img"> -->
+                <span class="logo-text" style="color: var(--primary-color);">ZAPPLET</span>
             </a>
             <div class="nav-links">
                 <a href="#features">产品介绍</a>
                 <a href="#docs">开发文档</a>
                 <a href="#help">帮助中心</a>
-                <a href="#contact">联系我们</a>
+                <a href="#about">关于我们</a>
             </div>
         </div>
     </nav>
 
     <section class="hero">
         <div class="container">
-            <h1>Zapplet 小程序开发平台</h1>
+            <h1>ZAPPLET 小程序开发平台</h1>
             <p>零代码，拖拽式开发，让每个人都能轻松创建专业的微信小程序</p>
             <p>快速搭建、实时预览、一键发布</p>
             <a href="#start" class="btn">立即开始</a>
@@ -221,9 +256,75 @@
         </div>
     </section>
 
+    <section id="docs" class="section">
+        <div class="container">
+            <h2 class="section-title">开发文档</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p>我们提供详细的开发文档，帮助您快速上手 ZAPPLET 平台：</p>
+                <div style="margin-top: 32px; text-align: left;">
+                    <h3 style="margin-bottom: 16px;">文档目录</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 12px;">• 快速入门指南</li>
+                        <li style="margin-bottom: 12px;">• 组件使用说明</li>
+                        <li style="margin-bottom: 12px;">• 模板开发教程</li>
+                        <li style="margin-bottom: 12px;">• API 接口文档</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="help" class="section">
+        <div class="container">
+            <h2 class="section-title">帮助中心</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p>遇到问题？我们提供多种途径帮助您解决：</p>
+                <div style="margin-top: 32px; text-align: left;">
+                    <h3 style="margin-bottom: 16px;">常见问题</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 12px;">• 账号注册与认证</li>
+                        <li style="margin-bottom: 12px;">• 开发环境配置</li>
+                        <li style="margin-bottom: 12px;">• 发布流程指南</li>
+                        <li style="margin-bottom: 12px;">• 故障排查手册</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">关于我们</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="margin-bottom: 32px;">ZAPPLET 是一个致力于简化微信小程序开发的平台，帮助用户快速实现创意。我们相信科技应该让生活更简单，让创造更自由。</p>
+                
+                <div style="margin-top: 48px;">
+                    <h3 style="font-size: 24px; margin-bottom: 24px;">联系我们</h3>
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <h4>电子邮件</h4>
+                            <p>support@zapplet.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-weixin"></i>
+                            <h4>微信公众号</h4>
+                            <p>ZAPPLET开发者</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <h4>GitHub</h4>
+                            <p><a href="https://github.com/zapplet">@zapplet</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="section" style="background: #FAFAFA; padding: 40px 0;">
         <div class="container" style="text-align: center; color: var(--secondary-text); font-size: 14px;">
-            <p>&copy; 2024 Zapplet - 做个小应用. All rights reserved.</p>
+            <p>&copy; 2024 ZAPPLET - 做个小应用. All rights reserved.</p>
         </div>
     </footer>
 </body>
