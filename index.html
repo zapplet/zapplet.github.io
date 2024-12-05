@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZAPPLET - 做个小应用 | 无代码微信小程序开发平台</title>
+    <title>美观的网页示例</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
         :root {
             --primary-color: #07C160;
-            --text-color: #000000;
+            --primary-hover: #06ae56;
+            --gradient-bg: linear-gradient(135deg, #07C160 0%, #05a351 100%);
+            --text-color: #2C3E50;
             --secondary-text: #586376;
             --border-color: #E7E7E7;
+            --section-bg: #F8FAFC;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         * {
@@ -25,6 +31,7 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: white;
+            overflow-x: hidden;
         }
 
         .container {
@@ -35,19 +42,25 @@
 
         /* 导航栏样式 */
         .navbar {
-            background-color: white;
-            border-bottom: 1px solid var(--border-color);
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(231, 231, 231, 0.5);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 60px;
+            height: 70px;
         }
 
         .logo-container {
@@ -57,102 +70,194 @@
             color: var(--text-color);
         }
 
-        .logo-img {
-            width: 32px;
-            height: 32px;
-            margin-right: 8px;
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--gradient-bg);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: transform 0.3s ease;
         }
 
-        .logo-text {
-            font-size: 18px;
-            font-weight: 500;
+        .logo-container:hover .logo-text {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
         }
 
         .nav-links a {
-            margin-left: 32px;
             text-decoration: none;
             color: var(--secondary-text);
-            font-size: 14px;
-            transition: color 0.3s;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-bg);
+            transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
             color: var(--primary-color);
         }
 
-        /* 主要内容样式 */
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* 英雄区域样式 */
         .hero {
-            padding: 120px 0 80px;
-            text-align: center;
-            background-color: #FAFAFA;
+            background: var(--gradient-bg);
+            color: white;
+            padding: 160px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            animation: backgroundMove 30s linear infinite;
+        }
+
+        @keyframes backgroundMove {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100px 100px;
+            }
         }
 
         .hero h1 {
-            font-size: 44px;
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.2;
             margin-bottom: 24px;
-            font-weight: 600;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
         }
 
         .hero p {
             font-size: 20px;
-            color: var(--secondary-text);
-            max-width: 800px;
-            margin: 0 auto 16px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards 0.2s;
+        }
+
+        .hero p:last-of-type {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 32px;
-            background-color: var(--primary-color);
-            color: white;
+            padding: 16px 40px;
+            background: white;
+            color: var(--primary-color);
             text-decoration: none;
-            border-radius: 4px;
-            font-size: 16px;
-            margin-top: 32px;
-            transition: background-color 0.3s;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 18px;
+            margin-top: 40px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards 0.6s;
         }
 
         .btn:hover {
-            background-color: #06ae56;
+            transform: translateY(-3px);
+            box-shadow: var(--hover-shadow);
         }
 
+        /* 特性区域样式 */
         .section {
-            padding: 80px 0;
+            padding: 100px 0;
+            background: var(--section-bg);
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 48px;
-            font-size: 32px;
-            font-weight: 600;
+            margin-bottom: 60px;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-color);
         }
 
         .features {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+            gap: 40px;
+            margin-top: 40px;
         }
 
         .feature {
-            text-align: center;
-            padding: 32px;
-            border-radius: 8px;
             background: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
         }
 
         .feature i {
-            font-size: 48px;
-            color: var(--primary-color);
+            font-size: 56px;
             margin-bottom: 24px;
+            background: var(--gradient-bg);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .feature h3 {
-            font-size: 20px;
+            font-size: 24px;
             margin-bottom: 16px;
+            color: var(--text-color);
         }
 
         .feature p {
+            color: var(--secondary-text);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background: var(--section-bg);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
             color: var(--secondary-text);
             font-size: 14px;
         }
@@ -164,168 +269,92 @@
             }
 
             .hero h1 {
-                font-size: 32px;
+                font-size: 36px;
             }
 
             .features {
                 grid-template-columns: 1fr;
             }
-
-            .contact-grid {
-                grid-template-columns: 1fr !important;
-            }
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin-top: 24px;
-        }
-
-        .contact-item {
-            text-align: center;
-        }
-
-        .contact-item i {
-            font-size: 32px;
-            color: var(--primary-color);
-            margin-bottom: 16px;
-        }
-
-        .contact-item h4 {
-            margin-bottom: 8px;
-        }
-
-        .contact-item a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .contact-item a:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
+    <header class="navbar">
         <div class="container nav-content">
-            <a href="/" class="logo-container">
-                <!-- 如果暂时没有logo，可以用文字代替 -->
-                <!-- <img src="logo.svg" alt="ZAPPLET" class="logo-img"> -->
-                <span class="logo-text" style="color: var(--primary-color);">ZAPPLET</span>
+            <a href="#" class="logo-container">
+                <span class="logo-text">Logo</span>
             </a>
-            <div class="nav-links">
-                <a href="#features">产品介绍</a>
-                <a href="#docs">开发文档</a>
-                <a href="#help">帮助中心</a>
-                <a href="#about">关于我们</a>
-            </div>
+            <nav class="nav-links">
+                <a href="#features">特性</a>
+                <a href="#contact">联系我们</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <section class="hero">
         <div class="container">
-            <h1>ZAPPLET 小程序开发平台</h1>
-            <p>零代码，拖拽式开发，让每个人都能轻松创建专业的微信小程序</p>
-            <p>快速搭建、实时预览、一键发布</p>
-            <a href="#start" class="btn">立即开始</a>
+            <h1>欢迎来到我们的网站</h1>
+            <p>这是一个美观的网页示例，展示了现代设计和动画效果。</p>
+            <a href="#features" class="btn">了解更多</a>
         </div>
     </section>
 
     <section id="features" class="section">
         <div class="container">
-            <h2 class="section-title">产品优势</h2>
+            <h2 class="section-title">我们的特性</h2>
             <div class="features">
-                <div class="feature">
-                    <i class="fas fa-magic"></i>
-                    <h3>可视化开发</h3>
-                    <p>所见即所得的界面设计，拖拽组件即可完成页面搭建，无需编写代码</p>
+                <div class="feature" data-aos="fade-up">
+                    <i class="fas fa-cogs"></i>
+                    <h3>高效</h3>
+                    <p>我们的产品设计高效，帮助您节省时间和精力。</p>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-cubes"></i>
-                    <h3>海量组件</h3>
-                    <p>内置丰富的组件库和模板，覆盖常见业务场景，快速实现功能需求</p>
+                <div class="feature" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>安全</h3>
+                    <p>我们重视您的安全，提供最先进的安全措施。</p>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-rocket"></i>
-                    <h3>一键发布</h3>
-                    <p>自动生成标准小程序代码，快速审核上线，持续更新迭代</p>
+                <div class="feature" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-heart"></i>
+                    <h3>用户友好</h3>
+                    <p>我们的界面设计直观，易于使用。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="docs" class="section">
+    <footer>
         <div class="container">
-            <h2 class="section-title">开发文档</h2>
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <p>我们提供详细的开发文档，帮助您快速上手 ZAPPLET 平台：</p>
-                <div style="margin-top: 32px; text-align: left;">
-                    <h3 style="margin-bottom: 16px;">文档目录</h3>
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom: 12px;">• 快速入门指南</li>
-                        <li style="margin-bottom: 12px;">• 组件使用说明</li>
-                        <li style="margin-bottom: 12px;">• 模板开发教程</li>
-                        <li style="margin-bottom: 12px;">• API 接口文档</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="help" class="section">
-        <div class="container">
-            <h2 class="section-title">帮助中心</h2>
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <p>遇到问题？我们提供多种途径帮助您解决：</p>
-                <div style="margin-top: 32px; text-align: left;">
-                    <h3 style="margin-bottom: 16px;">常见问题</h3>
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom: 12px;">• 账号注册与认证</li>
-                        <li style="margin-bottom: 12px;">• 开发环境配置</li>
-                        <li style="margin-bottom: 12px;">• 发布流程指南</li>
-                        <li style="margin-bottom: 12px;">• 故障排查手册</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">关于我们</h2>
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <p style="margin-bottom: 32px;">ZAPPLET 是一个致力于简化微信小程序开发的平台，帮助用户快速实现创意。我们相信科技应该让生活更简单，让创造更自由。</p>
-                
-                <div style="margin-top: 48px;">
-                    <h3 style="font-size: 24px; margin-bottom: 24px;">联系我们</h3>
-                    <div class="contact-grid">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <h4>电子邮件</h4>
-                            <p>support@zapplet.com</p>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-weixin"></i>
-                            <h4>微信公众号</h4>
-                            <p>ZAPPLET开发者</p>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-github"></i>
-                            <h4>GitHub</h4>
-                            <p><a href="https://github.com/zapplet">@zapplet</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="section" style="background: #FAFAFA; padding: 40px 0;">
-        <div class="container" style="text-align: center; color: var(--secondary-text); font-size: 14px;">
-            <p>&copy; 2024 ZAPPLET - 做个小应用. All rights reserved.</p>
+            <p>&copy; 2023 美观的网页示例. 保留所有权利.</p>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // 初始化AOS动画库
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
