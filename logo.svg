@@ -1,5 +1,0 @@
-<!-- 先创建这个 SVG 文件并保存为 logo.svg -->
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-    <rect width="64" height="64" fill="white"/>
-    <text x="16" y="48" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#07C160">Z</text>
-</svg>
