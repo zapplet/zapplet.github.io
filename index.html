@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZAPPLET | 无代码微信小程序开发平台</title>
+    <title>ZAPPLET - 做个小应用 | 无代码微信小程序开发平台</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
@@ -68,6 +68,11 @@
             align-items: center;
             text-decoration: none;
             color: var(--text-color);
+        }
+
+        .logo-container img {
+            height: 40px;
+            margin-right: 10px;
         }
 
         .logo-text {
@@ -330,10 +335,15 @@
     <header class="navbar">
         <div class="container nav-content">
             <a href="#" class="logo-container">
+                <img src="logo.svg" alt="ZAPPLET Logo">
                 <span class="logo-text">ZAPPLET</span>
             </a>
             <nav class="nav-links">
                 <a href="#features">特性</a>
+                <a href="#product">产品介绍</a>
+                <a href="#docs">开发文档</a>
+                <a href="#help">帮助中心</a>
+                <a href="#about">关于我们</a>
                 <a href="#contact">联系我们</a>
             </nav>
         </div>
@@ -368,6 +378,34 @@
                     <p>保障您的数据安全，放心使用。</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="section" id="product">
+        <div class="container">
+            <h2 class="section-title">产品介绍</h2>
+            <p>我们的平台提供了一套完整的工具，帮助您快速构建和发布微信小程序。无论您是个人开发者还是企业用户，我们都能满足您的需求。</p>
+        </div>
+    </section>
+
+    <section class="section" id="docs">
+        <div class="container">
+            <h2 class="section-title">开发文档</h2>
+            <p>详细的开发文档帮助您快速上手，了解平台的每一个功能和特性。</p>
+        </div>
+    </section>
+
+    <section class="section" id="help">
+        <div class="container">
+            <h2 class="section-title">帮助中心</h2>
+            <p>在这里您可以找到常见问题的解答和使用指南，帮助您解决使用过程中遇到的问题。</p>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">关于我们</h2>
+            <p>ZAPPLET 是一家致力于提供无代码开发解决方案的公司，我们的目标是让每个人都能轻松创建自己的应用程序。</p>
         </div>
     </section>
 
