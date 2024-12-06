@@ -5,17 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>联系我们 - ZAPPLET</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        .logo { width: 100px; }
-        nav { padding: 20px 0; }
-        nav a { margin: 0 10px; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav>
@@ -27,9 +17,33 @@
     
     <main>
         <h1>联系我们</h1>
-        <p>微信: zapplet</p>
-        <p>邮箱: contact@zapplet.com</p>
-        <p>GitHub: @zapplet</p>
+        <p>有任何问题？请随时联系我们</p>
+        
+        <form class="contact-form">
+            <div class="form-group">
+                <label for="name">姓名</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">邮箱</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">消息</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">发送消息</button>
+        </form>
+        
+        <div style="margin-top: 40px; animation: fadeIn 1s ease 0.5s both;">
+            <p>其他联系方式</p>
+            <p>微信: zapplet</p>
+            <p>邮箱: contact@zapplet.com</p>
+            <p>GitHub: @zapplet</p>
+        </div>
     </main>
 </body>
 </html>
