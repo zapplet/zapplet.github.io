@@ -5,18 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>特性 - ZAPPLET</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        .logo { width: 100px; }
-        .feature-icon { width: 50px; }
-        nav { padding: 20px 0; }
-        nav a { margin: 0 10px; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav>
@@ -28,15 +17,32 @@
     
     <main>
         <h1>核心特性</h1>
-        <div>
-            <img src="drag.svg" alt="拖拽" class="feature-icon">
-            <h2>拖拽构建</h2>
-            <p>简单拖拽，所见即所得</p>
-        </div>
-        <div>
-            <img src="deploy.svg" alt="部署" class="feature-icon">
-            <h2>快速部署</h2>
-            <p>一键发布小程序</p>
+        <p>探索ZAPPLET强大的功能</p>
+        
+        <div class="features-grid">
+            <div class="feature-card" style="animation-delay: 0.1s;">
+                <img src="drag.svg" alt="拖拽" class="feature-icon">
+                <h2>拖拽构建</h2>
+                <p>简单拖拽，所见即所得，快速构建你的小程序界面</p>
+            </div>
+            
+            <div class="feature-card" style="animation-delay: 0.2s;">
+                <img src="deploy.svg" alt="部署" class="feature-icon">
+                <h2>快速部署</h2>
+                <p>一键发布小程序，无需复杂配置</p>
+            </div>
+            
+            <div class="feature-card" style="animation-delay: 0.3s;">
+                <img src="template.svg" alt="模板" class="feature-icon">
+                <h2>丰富模板</h2>
+                <p>多种预设模板，助你快速启动项目</p>
+            </div>
+            
+            <div class="feature-card" style="animation-delay: 0.4s;">
+                <img src="customize.svg" alt="自定义" class="feature-icon">
+                <h2>深度定制</h2>
+                <p>支持自定义样式和功能，打造独特小程序</p>
+            </div>
         </div>
     </main>
 </body>
